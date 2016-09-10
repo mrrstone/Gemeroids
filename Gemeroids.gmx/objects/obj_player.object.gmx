@@ -495,7 +495,7 @@ alarm[0]=45;
           <argument>
             <kind>1</kind>
             <string>bullet = instance_create(x,y,obj_bullet);
-bullet.speed = 15;
+bullet.speed = 20;
 bullet.direction = image_angle;
 </string>
           </argument>
