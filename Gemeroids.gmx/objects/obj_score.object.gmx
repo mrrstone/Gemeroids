@@ -25,11 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.points = 0;
+            <string>// set global game variables
+global.points = 0;
 global.life = 3;
 global.shields = 3;
 global.lives_gained = 0;
-global.enter_name = 0;
 </string>
           </argument>
         </arguments>

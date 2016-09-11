@@ -519,7 +519,7 @@ bullet.direction = image_angle;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.shields &gt; 0) {
+            <string>if(global.shields &gt; 0 &amp;&amp; instance_exists(obj_player)) {
     sprite_index = spr_player_i;
     image_speed = 1/3;
     alarm[0]=90;
@@ -527,7 +527,7 @@ bullet.direction = image_angle;
     global.shields--;
     if (!global.charging) alarm[1] = 360;
     global.charging = true;
-    }
+}
 </string>
           </argument>
         </arguments>
