@@ -69,7 +69,7 @@
     image_angle = obj_player.image_angle;
     x = obj_player.x;
     y = obj_player.y;
-    draw_sprite(spr_shield,-1,obj_player.x,obj_player.y);
+    draw_sprite(sprite_index,-1,obj_player.x,obj_player.y);
 } else {
     instance_destroy();
 }
