@@ -26,9 +26,66 @@
           <argument>
             <kind>1</kind>
             <string>//add current player score to highscores table, exit
-name = get_string("Please enter your name: ","");
-highscore_add(name,global.points);
+var i;
+var name;
+
+if (global.points &gt; real(global.player_scores[0])) {
+    name = get_string("New high score! Please enter your name: ","");
+    for (i = 9;i &gt; 0;i--) {
+        global.player_scores[i] = global.player_scores[i-1];
+        global.player_names[i] = global.player_names[i-1];
+    }
+    global.player_scores[0] = string(global.points);
+    global.player_names[0] = name;
+//highscore_add(name,global.points);
+} else if (global.points &gt; real(global.player_scores[8])){
+    name = get_string("Not bad! Please enter your name: ","");
+    i = 9;
+    while(real(global.player_scores[i-1]) &lt; global.points) {
+        global.player_scores[i] = global.player_scores[i-1];
+        global.player_names[i] = global.player_names[i-1];
+        i--;
+    }
+    global.player_scores[i] = string(global.points);
+    global.player_names[i] = name;
+} else {
+    name = get_string("Not bad! Please enter your name: ","");
+    global.player_scores[9] = string(global.points);
+    global.player_names[9] = name;
+}
+// write current names and scores to ini
+for(i = 9;i&gt;=0; i--) {
+    ini_write_string(string(i),"name",global.player_names[i]);
+    ini_write_string(string(i),"score",global.player_scores[i]);
+}
 alarm[0]=2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//write highscores table to ini
+for(i = 9;i&gt;=0; i--) {
+    ini_write_string(string(i),"name",global.player_names[i]);
+    ini_write_string(string(i),"score",global.player_scores[i]);
+}
 </string>
           </argument>
         </arguments>
@@ -52,7 +109,6 @@ alarm[0]=2;
           <argument>
             <kind>1</kind>
             <string>//cleanup
-ini_close();
 instance_destroy();
 </string>
           </argument>

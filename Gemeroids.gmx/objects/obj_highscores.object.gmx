@@ -30,11 +30,15 @@ var player_score;
 var i = 0;
 
 //open ini and read names and scores to highscores table
+
 ini_open("highscores.ini");
 for(i = 9;i&gt;=0; i--) {
     player_name = ini_read_string(string(i),"name","---");
-    player_score = ini_read_real(string(i),"score",0);
-    highscore_add(player_name,player_score);
+    player_score = ini_read_string(string(i),"score","0");
+    
+    // highscore_add(player_name,player_score);
+    global.player_names[i] = player_name;
+    global.player_scores[i] = player_score;
 } 
 </string>
           </argument>
@@ -86,8 +90,17 @@ ini_close();
 draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_font(fnt_small);
-draw_text(room_width/2-60,40,"HIGH SCORES");
-draw_highscore(room_width/2-160,70,room_width/2+180,room_height/2-40);
+draw_text(room_width/2-70,40,"HIGH SCORES");
+var space = 24;
+
+// draw_highscore(room_width/2-160,70,room_width/2+180,room_height/2-40);
+for (var i = 0; i &lt; 10; i++) {
+    draw_text(room_width/2-160,40+(space*(i+1)),global.player_names[i]);
+}
+draw_set_halign(fa_right);
+for (var i = 0; i &lt; 10; i++) {
+    draw_text(room_width/2+160,40+(space*(i+1)),global.player_scores[i]);
+}
 </string>
           </argument>
         </arguments>
@@ -110,15 +123,63 @@ draw_highscore(room_width/2-160,70,room_width/2+180,room_height/2-40);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//write highscores table to ini
-for(i = 9;i&gt;=0; i--) {
-    ini_write_string(string(i),"name",highscore_name(i));
-    ini_write_real(string(i),"score",highscore_value(i));
-}
-
-//cleanup
+            <string>//cleanup
 ini_close();
 instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="57">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// write current names and scores to ini
+for(i = 9;i&gt;=0; i--) {
+    ini_write_string(string(i),"name",global.player_names[i]);
+    ini_write_string(string(i),"score",global.player_scores[i]);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="48">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// clear high score table
+for (var i = 9;i&gt;=0;i--) {
+    global.player_names[i] = "---";
+    global.player_scores[i] = "0";
+}
 </string>
           </argument>
         </arguments>

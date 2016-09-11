@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menu[0] = "START";
+            <string>// menu options
+menu[0] = "START";
 menu[1] = "HIGH SCORES";
 menu[2] = "EXIT";
 
