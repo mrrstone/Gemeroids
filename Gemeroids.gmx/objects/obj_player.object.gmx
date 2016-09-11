@@ -495,7 +495,7 @@ alarm[0]=45;
           <argument>
             <kind>1</kind>
             <string>bullet = instance_create(x,y,obj_bullet);
-bullet.speed = 15;
+bullet.speed = 20;
 bullet.direction = image_angle;
 </string>
           </argument>
@@ -519,14 +519,15 @@ bullet.direction = image_angle;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.shields &gt; 0) {
+            <string>if(global.shields &gt; 0 &amp;&amp; instance_exists(obj_player)) {
     sprite_index = spr_player_i;
     image_speed = 1/3;
     alarm[0]=90;
+    instance_create(x,y,obj_shield);
     global.shields--;
     if (!global.charging) alarm[1] = 360;
     global.charging = true;
-    }
+}
 </string>
           </argument>
         </arguments>

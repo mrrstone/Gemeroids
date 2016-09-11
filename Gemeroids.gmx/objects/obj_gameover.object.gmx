@@ -8,6 +8,34 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// show high scores and set timer to prompt for player name if score is high enough
+instance_create(0,0,obj_highscores);
+
+if (global.points &gt; real(global.player_scores[9])) {
+    alarm[0] = 90;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -54,15 +82,26 @@ draw_set_font(fnt_large);
 draw_set_color(c_white);
 draw_text(room_width/2,room_height/2,"GAME OVER");
 draw_set_font(fnt_small);
-if (!global.enter_name) {
-    alarm[0] = 90;
-    global.enter_name = 1;
-}
-instance_create(0,0,obj_highscores);
 draw_text(room_width/2,room_height/2 + 50,"PRESS R TO RESTART, X TO EXIT");
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="88">
+      <action>
+        <libid>1</libid>
+        <id>332</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_end_game</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
   </events>

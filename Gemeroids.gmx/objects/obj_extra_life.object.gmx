@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y_pos = obj_player.y;
+            <string>
+y_pos = obj_player.y - 12; // y position for the 1-up message to first appear
 msg_alpha = 1.0;
 global.life++;
 audio_play_sound(snd_1up,0,0);
@@ -95,7 +96,7 @@ msg_alpha -= 0.01;
             <kind>1</kind>
             <string>    draw_set_font(fnt_small);
     draw_set_halign(fa_center);
-    draw_set_alpha(0.8);
+    draw_set_alpha(1);
     draw_set_color(c_green);
     draw_text(obj_player.x,y_pos,"1-up!");
 </string>
