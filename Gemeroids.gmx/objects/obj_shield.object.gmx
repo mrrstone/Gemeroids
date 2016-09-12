@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>alarm[0] = 90;
+audio_play_sound(snd_Shield_Activate, 1, 0);
 </string>
           </argument>
         </arguments>

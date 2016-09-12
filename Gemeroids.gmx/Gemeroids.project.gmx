@@ -9,6 +9,8 @@
     <sound>sound\snd_explosion2</sound>
     <sound>sound\snd_laser</sound>
     <sound>sound\snd_1up</sound>
+    <sound>sound\snd_Shield_Activate</sound>
+    <sound>sound\snd_select</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
