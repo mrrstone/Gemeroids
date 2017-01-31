@@ -125,7 +125,8 @@ else alarm[1] = 360;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(sprite_index == spr_player) {
+            <string>/// handle collision with asteroid
+if(sprite_index == spr_player) {
     instance_destroy();
     if(global.life &gt; 0) {
         global.life--;

@@ -25,13 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>// initialize extra life object
+var MESSAGE_TIME = 45; // lifespan of message text
 y_pos = obj_player.y - 12; // y position for the 1-up message to first appear
-msg_alpha = 1.0;
+msg_alpha = 1.0; 
 global.life++;
-audio_play_sound(snd_1up,0,0);
+audio_play_sound(snd_1up,1,0);
 
-alarm[0] = 45;
+alarm[0] = MESSAGE_TIME;
 </string>
           </argument>
         </arguments>

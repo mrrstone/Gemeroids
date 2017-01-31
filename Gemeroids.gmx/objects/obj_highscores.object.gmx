@@ -62,11 +62,11 @@ for(i = 9;i&gt;=0; i--) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// write current names and scores to ini
+            <string>/*// write current names and scores to ini
 for(i = 9;i&gt;=0; i--) {
     ini_write_string(string(i),"name",global.player_names[i]);
     ini_write_string(string(i),"score",global.player_scores[i]);
-}
+} */
 
 //cleanup
 ini_close();
