@@ -52,7 +52,8 @@ global.lives_gained = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.points div 5000 &gt; global.lives_gained) {
+            <string>// add an extra life every 5000 points
+if (global.points div 5000 &gt; global.lives_gained) {
     global.lives_gained++;
     with (obj_player) instance_create(x,y,obj_extra_life);
 }
